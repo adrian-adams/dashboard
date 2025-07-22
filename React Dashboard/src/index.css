@@ -1,5 +1,67 @@
 @import "tailwindcss";
+@plugin "flowbite-react/plugin/tailwindcss";
+@source "../.flowbite-react/class-list.json";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+@theme {
+    --doom-green: #39CF1E; 
+}
+
+@layer base {
+    html {
+        font-size: 1rem;
+    }
+
+    body {
+        @apply h-screen overflow-x-hidden overflow-y-scroll bg-black relative z-30;
+    }
+
+    header {
+        @apply border border-b-amber-600 sticky w-full top-0 left-0 z-20;
+    }
+
+    main {
+        @apply grid gap-4 justify-center [grid-template-columns:repeat(auto-fit,minmax(300px,1fr))] p-4 scroll-pt-24 z-10;
+    }
+}
+
+@layer components {
+    .dash-nav {
+        background: var(--doom-green);
+        background: linear-gradient(to right, var(--doom-green) 0%, #090909 65%);
+
+        @apply flex flex-col h-full gap-2 items-center md:flex-row justify-between px-4 py-3;
+
+    }
+
+
+    .add-button {
+        @apply cursor-pointer transition duration-150 ease-out hover:scale-110 hover:opacity-50;
+    }
+
+    .res-card {
+        @apply w-full bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700;
+
+        & ul li {
+            @apply after:content-[','] after:ml-0.5 last:after:content-[''];
+        }
+
+    }
+
+    .add-card {
+        @apply w-full h-full flex justify-center items-center flex-col gap-2 border border-4 border-gray-50 border-dashed rounded-lg text-gray-50 font-medium py-4;
+    }
+
+    .cust-btn-hover {
+        @apply cursor-pointer transition duration-150 ease-out hover:scale-110 hover:opacity-50 bg-[var(--doom-green)];  
+    }
+
+    /* Drawer */
+
+    .drawer-btn {
+        @apply bg-transparent! focus:bg-transparent! px-2!;
+    }
+    
+}
